@@ -25,13 +25,19 @@ ui <- dashboardPage(
                      pickerInput(
                        inputId = "asset_selection",
                        label = "Select Asset Classes and Currency Areas:",
-                       choices = names(predefined_groups),
+                       choices = asset_choices,
                        multiple = TRUE,
-                       selected = names(predefined_groups),
+                       selected = asset_choices,
                        options = pickerOptions(actionsBox = TRUE)
                      )
             ),
-            tabPanel("Statistics and Correlation", "Content for Statistics..."),
+            tabPanel("Statistics and Correlation",
+                     h3("Summary Statistics"),
+                     DTOutput("summary_stats"),  # Use DTOutput for displaying the table
+                     br(),
+                     h3("Covariance / Correlation Matrix"),
+                     tableOutput("cov_corr_matrix")
+            ),
             tabPanel("Adjust Parameters", 
                      "Content for Parameter Adjustment...",
                      actionButton("save_parameters", "Save Changes")

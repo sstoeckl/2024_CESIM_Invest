@@ -47,7 +47,10 @@ ui <- dashboardPage(
           tabBox(
             width = 12,
             title = "Portfolio Optimization",
-            tabPanel("Group Constraints", "Content for Group Constraints..."),
+            tabPanel("Group Constraints", 
+                     h3("Set Group Constraints"),
+                     uiOutput("group_constraints_ui")  # Dynamic group constraints UI with box constraint
+            ),
             tabPanel("Portfolio Objectives", "Content for Portfolio Objectives..."),
             tabPanel("Optimization Results", "Content for Optimization Results..."),
             tabPanel("Saved Optimizations", "Content for Saved Optimizations...")
